@@ -57,7 +57,10 @@ def run_training():
                                                           IMG_W,
                                                           IMG_H,
                                                           BATCH_SIZE, 
-                                                          CAPACITY)      
+                                                          CAPACITY)
+    # convert the uit8 to the float32
+    train_batch = tf.cast(train_batch, tf.float32)
+    
     train_logits = model.inference(train_batch, BATCH_SIZE, N_CLASSES)
     train_loss = model.losses(train_logits, train_label_batch)        
     train_op = model.trainning(train_loss, learning_rate)
