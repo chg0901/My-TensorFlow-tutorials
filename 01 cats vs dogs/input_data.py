@@ -120,7 +120,8 @@ def get_batch(image, label, image_W, image_H, batch_size, capacity):
 #                                                      min_after_dequeue=CAPACITY-1)
     
     label_batch = tf.reshape(label_batch, [batch_size])
-    image_batch = tf.cast(image_batch, tf.float32)
+    # do this before we use variable image_batch to train the model
+    #image_batch = tf.cast(image_batch, tf.float32)
     
     return image_batch, label_batch
 
